@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+    <div id="loginSection">
+      <form id="loginForm">
+        <label for="adminUser">Username</label>
+        <input type="text" id="adminUser" required>
+        <label for="adminPass">Password</label>
+        <input type="password" id="adminPass" required>
+        <button type="submit">Login</button>
+      </form>
+      <div class="message hidden"></div>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <h2>Sessions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Session ID</th>
+            <th>Coach A</th>
+            <th>Coach B</th>
+            <th>A Submitted</th>
+            <th>B Submitted</th>
+          </tr>
+        </thead>
+        <tbody id="sessionTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const message = document.querySelector('.message');
+    const dashboard = document.getElementById('dashboard');
+    const sessionTableBody = document.getElementById('sessionTableBody');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = document.getElementById('adminUser').value.trim();
+      const pass = document.getElementById('adminPass').value;
+      if (user === 'taitazak' && pass === 'asd321!') {
+        // Hide login form and show dashboard
+        loginForm.parentElement.style.display = 'none';
+        dashboard.classList.remove('hidden');
+        loadSessions();
+      } else {
+        message.textContent = 'Invalid credentials';
+        message.classList.remove('hidden', 'success');
+        message.classList.add('warning');
+      }
+    });
+
+    function loadSessions() {
+      const sessions = JSON.parse(localStorage.getItem('sessions') || '{}');
+      sessionTableBody.innerHTML = '';
+      Object.keys(sessions).forEach(function(id) {
+        const s = sessions[id];
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${id}</td>
+          <td>${s.coachA.name}</td>
+          <td>${s.coachB.name}</td>
+          <td>${s.coachA.submitted ? 'Yes' : 'No'}</td>
+          <td>${s.coachB.submitted ? 'Yes' : 'No'}</td>
+        `;
+        sessionTableBody.appendChild(row);
+      });
+    }
+  });
+  </script>
+</body>
+</html>
