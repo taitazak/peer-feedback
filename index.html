@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peer Feedback Exchange</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Peer Coaching Feedback Exchange</h1>
+    <p class="subtitle">Facilitate thoughtful testimonials and feedback between peer coaches.</p>
+  </header>
+  <main>
+    <section class="intro">
+      <p>Welcome! This tool helps two peer coaches exchange feedback and testimonials ethically. To begin, fill in your details and invite your peer.</p>
+    </section>
+    <section class="session-form">
+      <h2>Create a Feedback Session</h2>
+      <form id="create-session-form">
+        <div class="field-group">
+          <label for="coachAName">Your Name</label>
+          <input type="text" id="coachAName" required>
+        </div>
+        <div class="field-group">
+          <label for="coachAEmail">Your Email</label>
+          <input type="email" id="coachAEmail" required>
+        </div>
+        <div class="field-group">
+          <label for="coachBName">Peer's Name</label>
+          <input type="text" id="coachBName" required>
+        </div>
+        <div class="field-group">
+          <label for="coachBEmail">Peer's Email</label>
+          <input type="email" id="coachBEmail" required>
+        </div>
+        <button type="submit">Start Session</button>
+      </form>
+      <div id="session-message" class="hidden"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
