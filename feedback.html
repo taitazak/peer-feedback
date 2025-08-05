@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peer Coaching Feedback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Peer Coaching Feedback</h1>
+
+    <form id="feedbackForm">
+      <label for="testimonial"><strong>Client Testimonial</strong></label>
+      <textarea id="testimonial" rows="4" placeholder="Describe the impact of this coaching session..." required></textarea>
+
+      <label for="coachingFeedback"><strong>Coaching Feedback</strong></label>
+      <textarea id="coachingFeedback" rows="4" placeholder="Share feedback to support your peer coach's growth..." required></textarea>
+
+      <fieldset>
+        <legend><strong>Consent to Use Testimonial</strong></legend>
+        <label><input type="checkbox" id="consentWebsite"> I agree to let my testimonial be used on your website</label><br>
+        <label><input type="checkbox" id="consentDirectory"> I agree to let my testimonial be used on coaching directories</label><br>
+        <label><input type="checkbox" id="consentSocial"> I agree to let my testimonial be used on social media</label><br>
+        <label><input type="checkbox" id="consentContact"> You may contact me in the future for a review or testimonial</label>
+      </fieldset>
+
+      <div class="button-group">
+        <button type="button" id="saveDraft">Save Draft</button>
+        <button type="submit" id="submitFeedback">Submit Feedback</button>
+      </div>
+    </form>
+
+    <div class="message hidden"></div>
+
+    <div id="peerFeedback" class="hidden">
+      <h2>Your Peer’s Feedback</h2>
+      <h3>Peer Testimonial</h3>
+      <p id="peerTestimonial"></p>
+      <h3>Peer Coaching Feedback</h3>
+      <p id="peerCoaching"></p>
+      <h3>Peer Consent Choices</h3>
+      <ul id="peerConsent"></ul>
+    </div>
+  </div>
+
+  <script src="feedback.js"></script>
+</body>
+</html>
